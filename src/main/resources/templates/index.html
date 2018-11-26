@@ -69,6 +69,18 @@
     <label for="mike">Mike</label>
     <br>
     <span>Checked names: {{ checkedNames }}</span>
+    <br>
+
+    <!-- 当选中时，`picked` 为字符串 "a" -->
+    <input type="radio" v-model="picked" value="a">{{picked}}
+
+    <!-- `toggle` 为 true 或 false -->
+    <input type="checkbox" v-model="toggle">{{toggle}}
+
+    <!-- 当选中第一个选项时，`selected` 为字符串 "abc" -->
+    <select v-model="selected">
+        <option value="abc">ABC</option>
+    </select>
 </div>
 
 </body>
@@ -127,6 +139,9 @@
         }
     })
 
+    /**
+     * 模板
+     */
     Vue.component('todo-item', {
         props: ['todo'],
         template: '<li>{{ todo.text }}</li>'
@@ -150,10 +165,15 @@
         }
     });
 
+    /**
+     * 复选框值的绑定
+     */
     new Vue({
         el: '#example-3',
         data: {
-            checkedNames: []
+            checkedNames: [],
+            picked:'',
+            toggle:null
         }
     })
 </script>
